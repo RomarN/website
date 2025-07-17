@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romar Nathoe</title>
+    <link rel="stylesheet" href="./CSS/index.css">
+</head>
+<body>
+    <!-- Navigatie -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Romar Nathoe</a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="" class="active">Home</a></li>
+                <li><a href="overmij.html">Over Mij</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero sectie -->
+    <main class="hero">
+
+            <div class="photo-section">
+            <div class="photo-placeholder">
+               <img class="photo" src="./Plaatjes/Romar_1_web.jpg">
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <h1>Welkom</h1>
+            <h2>Leuk je te ontmoeten!</h2>
+
+            <div class="story-section">
+                <h3>Wie ben ik?</h3>
+                <div class="story-placeholder">
+                    Ik ben Romar, <a id="leeftijd"></a> jaar oud. Na een Electrical Engineering bachelor aan de TU Eindhoven,
+                    heb ik Data Science and Entrepreneurship gedaan als master bij de <a target="_blank" class="url" href="https://jads.nl">JADS</a>.
+                    <br>
+                    <br>
+                    Ik ben een developer. Deze website heb ik zelf opgezet en geschreven in HTML, CSS en JavaScript.
+                    De website is gehost op AWS.
+
+                    <br>
+                    <br>
+                     Tegenwoordig werk ik bij Republiq waar ik ontwikkel aan onze webapplicatie <a class="url" href="https://www.republiq.nl/product/pien-voor-woningcorporaties" target="_blank">Pien!</a>
+                    <br>
+                    <br>
+                    <h4><a href="overmij.html" class="url">Meer over mij!</a></h4>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Romar Nathoe. Alle rechten voorbehouden.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Sluit menu wanneer er op een link wordt geklikt (mobiel)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Sluit menu wanneer er buiten wordt geklikt
+        document.addEventListener('click', (e) => {
+            const nav = document.querySelector('nav');
+            const navLinks = document.getElementById('navLinks');
+
+            if (!nav.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+<script>
+    function bereken_leeftijd (dateString) {
+        var today = new Date();
+        var birthDate = new Date(dateString);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+    return age;
+    }
+
+    document.getElementById('leeftijd').innerText = bereken_leeftijd('1998/09/03')
+
+</script>
+</html>
