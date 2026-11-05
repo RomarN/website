@@ -594,13 +594,25 @@
   .races__intro { grid-column: 1 / -1; display: grid; gap: .75rem; max-width: 52rem; }
   @media (max-width: 960px) { .races { grid-template-columns: 1fr; } }
 
-  .race-list { display: grid; }
+  .race-list { display: grid; gap: 2rem; }
+  .race-group__title {
+    display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem;
+    font-size: .95rem; letter-spacing: -.01em;
+  }
+  .race-group__title .mono { margin-left: auto; }
+  /* Hele = massief, halve = gearceerd: zelfde codering als in de grafiek */
+  .race-group__dot { width: .8rem; height: .8rem; border-radius: 3px; flex: none; }
+  .race-group__dot--full { background: var(--accent); }
+  .race-group__dot--half {
+    background: repeating-linear-gradient(135deg, var(--accent) 0 2px, transparent 2px 4px);
+    box-shadow: inset 0 0 0 1.5px var(--accent);
+  }
   .race {
     display: grid; grid-template-columns: 6.5rem 1fr auto; align-items: center; gap: .25rem 1.25rem;
     padding-block: 1.25rem; border-bottom: 1px solid var(--border);
   }
   .race:first-child { border-top: 1px solid var(--border); }
-  .race__body h3 { font-size: 1.1rem; letter-spacing: -.02em; }
+  .race__body h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.02em; }
   .race__meta { font-size: .85rem; }
   .race__time {
     font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; letter-spacing: -.04em; line-height: 1;
@@ -659,6 +671,15 @@
     transition: opacity .25s;
   }
   .pace-chart__row[data-dim] { opacity: .35; }
+  .pace-chart__group {
+    font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--fg-faint); padding-top: .5rem;
+  }
+  .pace-chart__group + .pace-chart__row { margin-top: -.25rem; }
+  .pace-chart__row + .pace-chart__group { margin-top: .75rem; padding-top: .9rem; border-top: 1px solid var(--border); }
+  .pace-chart__row--half .pace-chart__bar {
+    background: repeating-linear-gradient(135deg, var(--accent) 0 3px, color-mix(in oklab, var(--accent) 35%, transparent) 3px 6px);
+  }
   .pace-chart__label { font-size: .85rem; color: var(--fg-muted); padding-right: 1rem; line-height: 1.25; }
   .pace-chart__track { position: relative; height: 100%; margin-right: 3.25rem; }
   .pace-chart__bar {
@@ -692,6 +713,42 @@
     .pace-chart { --label-w: 7.25rem; padding: 1.25rem 1rem 2.5rem; }
     .pace-chart__label { font-size: .75rem; }
   }
+
+  /* Persoonlijke records: kleine multiples met dezelfde tempo-schaal (0 – 7:00/km) */
+  .prs { grid-column: 1 / -1; display: grid; gap: 1.5rem; margin-top: 1rem; }
+  .prs__head { display: grid; grid-template-columns: auto 1fr auto; gap: .5rem 2rem; align-items: baseline; }
+  .prs__head h3 { font-size: 1.5rem; }
+  .prs__head p { max-width: 60ch; font-size: .95rem; }
+  .prs__legend { display: inline-flex; align-items: center; gap: .5rem; font-size: .72rem; white-space: nowrap; }
+  .prs__legend-bar {
+    position: relative; width: 2.5rem; height: 4px; border-radius: 0 4px 4px 0; background: var(--accent);
+  }
+  .prs__legend-bar::after { content: ''; position: absolute; left: 75%; top: -4px; bottom: -4px; width: 1.5px; background: var(--fg-muted); }
+  @media (max-width: 960px) { .prs__head { grid-template-columns: 1fr; } }
+
+  .prs__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .6rem; }
+  .pr {
+    position: relative; display: grid; gap: .15rem;
+    padding: .9rem 1rem 1.1rem;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--surface);
+  }
+  .pr__dist { color: var(--fg-faint); font-size: .72rem; }
+  .pr__time { font-size: 1.35rem; font-weight: 600; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+  .pr__pace { font-size: .8rem; font-variant-numeric: tabular-nums; }
+  .pr__bar {
+    position: relative; height: 4px; margin-top: .55rem; border-radius: 4px;
+    background: var(--border);
+  }
+  .pr__bar::before {
+    content: ''; position: absolute; inset: 0 auto 0 0; width: var(--x);
+    border-radius: 0 4px 4px 0; background: var(--accent);
+    transform-origin: left; scale: 0 1; transition: scale 1s var(--ease-out);
+  }
+  /* Doeltempo 4:15,9/km op schaal 7:00 = 60,9% */
+  .pr__bar::after { content: ''; position: absolute; left: 60.9%; top: -4px; bottom: -4px; width: 1.5px; background: var(--fg-muted); }
+  .prs[data-visible] .pr__bar::before { scale: 1 1; }
+  .pr--slower .pr__pace { color: var(--fg); }
 
   /* ================= NU ================= */
   .now {

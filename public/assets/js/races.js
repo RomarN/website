@@ -9,9 +9,17 @@ const ticks_sec = [0, 120, 240, 360];
 /**
  * @typedef {Object} Wedstrijd
  * @property {string} label
+ * @property {string} titel - Volledige naam voor tooltip, bijv. "Marathon Eindhoven 2024"
  * @property {string} datum
  * @property {string} eindtijd
  * @property {number} tempo_sec - Seconden per kilometer
+ */
+
+/**
+ * @typedef {Object} Groep
+ * @property {string} naam
+ * @property {string} soort - 'full' of 'half', voor de visuele codering
+ * @property {Wedstrijd[]} wedstrijden
  */
 
 /**
@@ -25,17 +33,34 @@ function format_tempo (seconden) {
 }
 
 /**
- * Leest de wedstrijden uit de lijst, oudste eerst
+ * Leest de wedstrijden per afstandsgroep uit de lijst, oudste eerst binnen een groep
  * @param {HTMLElement} lijst
- * @returns {Wedstrijd[]}
+ * @returns {Groep[]}
  */
-function lees_wedstrijden (lijst) {
-  return [...lijst.querySelectorAll('.race')].map((item) => ({
-    label: item.dataset.label,
-    datum: item.querySelector('time').textContent,
-    eindtijd: item.querySelector('.race__time').textContent,
-    tempo_sec: Number(item.dataset.seconds) / Number(item.dataset.km)
-  })).reverse();
+function lees_groepen (lijst) {
+  return [...lijst.querySelectorAll('.race-group')].map((groep) => ({
+    naam: groep.dataset.group,
+    soort: groep.querySelector('.race-group__dot--half') != null ? 'half' : 'full',
+    wedstrijden: [...groep.querySelectorAll('.race')].map((item) => ({
+      label: item.dataset.label,
+      titel: `${item.querySelector('h4').textContent} ${item.querySelector('time').dateTime.slice(0, 4)}`,
+      datum: item.querySelector('time').textContent,
+      eindtijd: item.querySelector('.race__time').textContent,
+      tempo_sec: Number(item.dataset.seconds) / Number(item.dataset.km)
+    })).reverse()
+  }));
+}
+
+/**
+ * Kopregel van een afstandsgroep in de grafiek
+ * @param {Groep} groep
+ * @returns {HTMLElement}
+ */
+function maak_groep_kop (groep) {
+  const kop = document.createElement('div');
+  kop.className = `pace-chart__group pace-chart__group--${groep.soort}`;
+  kop.textContent = groep.naam;
+  return kop;
 }
 
 /**
@@ -51,11 +76,12 @@ function x_positie (tempo_sec) {
  * Bouwt één rij van de grafiek
  * @param {Wedstrijd} wedstrijd
  * @param {number} index
+ * @param {string} soort - 'full' of 'half'
  * @returns {HTMLElement}
  */
-function maak_rij (wedstrijd, index) {
+function maak_rij (wedstrijd, index, soort) {
   const rij = document.createElement('div');
-  rij.className = 'pace-chart__row';
+  rij.className = `pace-chart__row pace-chart__row--${soort}`;
   rij.tabIndex = 0;
   rij.dataset.index = index;
   rij.style.setProperty('--x', x_positie(wedstrijd.tempo_sec));
@@ -116,7 +142,7 @@ function get_tooltip_tekst (wedstrijd, doel_tempo_sec) {
   const vergelijking = verschil > 0
     ? `${format_tempo(verschil)} /km langzamer dan doel`
     : `${format_tempo(-verschil)} /km sneller dan doel`;
-  return `${wedstrijd.label} · ${wedstrijd.datum}\n${wedstrijd.eindtijd} · ${format_tempo(wedstrijd.tempo_sec)} /km\n${vergelijking}`;
+  return `${wedstrijd.titel} · ${wedstrijd.datum}\n${wedstrijd.eindtijd} · ${format_tempo(wedstrijd.tempo_sec)} /km\n${vergelijking}`;
 }
 
 /**
@@ -131,9 +157,18 @@ export function init_race_chart () {
   const plot = figuur.querySelector('[data-pace-plot]');
   const tooltip = figuur.querySelector('[data-pace-tooltip]');
   const doel_tempo_sec = Number(figuur.dataset.goalSeconds) / Number(figuur.dataset.goalKm);
-  const wedstrijden = lees_wedstrijden(lijst);
+  const groepen = lees_groepen(lijst);
+  const wedstrijden = groepen.flatMap((groep) => groep.wedstrijden);
 
-  plot.append(maak_as(doel_tempo_sec), ...wedstrijden.map(maak_rij));
+  plot.append(maak_as(doel_tempo_sec));
+  let index = 0;
+  groepen.forEach((groep) => {
+    plot.append(maak_groep_kop(groep));
+    groep.wedstrijden.forEach((wedstrijd) => {
+      plot.append(maak_rij(wedstrijd, index, groep.soort));
+      index += 1;
+    });
+  });
   plot.querySelectorAll('.pace-chart__row').forEach((rij) => {
     rij.setAttribute('role', 'img');
     rij.setAttribute('aria-label', get_tooltip_tekst(wedstrijden[Number(rij.dataset.index)], doel_tempo_sec));
