@@ -66,10 +66,10 @@
     <nav aria-label="Hoofdnavigatie">
       <ul class="nav__links">
         <li><a href="#over">Over</a></li>
-        <li><a href="#nu">Nu</a></li>
         <li><a href="#werk">Werk</a></li>
         <li><a href="#stack">Stack</a></li>
         <li><a href="#buiten-werk">Buiten werk</a></li>
+        <li><a href="#nu">Nu</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -176,8 +176,8 @@
             Na mijn bachelor Electrical Engineering aan de TU Eindhoven deed ik de master
             Data Science &amp; Entrepreneurship bij de <a href="https://jads.nl" target="_blank" rel="noopener" class="link">JADS</a>.
             Sinds 2021 werk ik als full-stack developer bij
-            <a href="https://www.republiq.nl" target="_blank" rel="noopener" class="link">Republiq</a>. Ik begon vooral aan de
-            front-end, en schoof steeds verder door naar back-end, data en infrastructuur.
+            <a href="https://www.republiq.nl" target="_blank" rel="noopener" class="link">Republiq</a>. Daar werk ik over de
+            hele stack: van interface en API tot data en infrastructuur, vaak allemaal in dezelfde week.
           </p>
           <p class="reveal">
             Die combinatie maakt het leuk: een Django-endpoint ontwerpen, de data-pipeline erachter
@@ -199,78 +199,17 @@
       </div>
     </section>
 
-    <!-- ───────────────────────── Nu ───────────────────────── -->
-    <section class="section container" id="nu">
-      <header class="section__head reveal">
-        <span class="section__index mono">02</span>
-        <h2>Nu bezig <em class="serif">met</em></h2>
-        <span class="section__meta mono muted">bijgewerkt nov 2026</span>
-      </header>
-
-      <article class="now reveal" data-spotlight>
-        <div class="now__goal">
-          <p class="now__event mono">
-            <span class="pulse" aria-hidden="true"></span>
-            Marathon Rotterdam · zo 11 april 2027 · <span class="now__tag">#demooiste</span>
-          </p>
-          <h3 class="now__title">
-            Sub <span class="now__time">3:00:00</span>
-          </h3>
-
-          <div class="countdown" data-countdown="2027-04-11T10:00:00+02:00" role="timer"
-               aria-label="Aftellen tot de start van de Marathon Rotterdam op zondag 11 april 2027 om 10:00">
-            <div class="countdown__unit"><span class="countdown__value" data-unit="dagen">000</span><span class="countdown__label">dagen</span></div>
-            <span class="countdown__sep" aria-hidden="true">:</span>
-            <div class="countdown__unit"><span class="countdown__value" data-unit="uren">00</span><span class="countdown__label">uur</span></div>
-            <span class="countdown__sep" aria-hidden="true">:</span>
-            <div class="countdown__unit"><span class="countdown__value" data-unit="minuten">00</span><span class="countdown__label">min</span></div>
-            <span class="countdown__sep" aria-hidden="true">:</span>
-            <div class="countdown__unit"><span class="countdown__value" data-unit="seconden">00</span><span class="countdown__label">sec</span></div>
-          </div>
-          <p class="countdown__note mono muted" data-countdown-note>tot het startschot · 10:00 op de Schiedamsedijk</p>
-          <p class="now__text">
-            Na twee marathons is het volgende doel helder: Rotterdam onder de drie uur.
-            Dat betekent 42,195 km lang elke kilometer rond de 4:15. De komende maanden draait alles om
-            kilometers maken, tempoduurlopen en intervallen.
-          </p>
-          <dl class="now__facts">
-            <div><dt>Afstand</dt><dd>42,195 km</dd></div>
-            <div><dt>Doeltempo</dt><dd>4:15 /km</dd></div>
-            <div><dt>Doeltijd</dt><dd>&lt; 3:00:00</dd></div>
-          </dl>
-        </div>
-
-        <div class="pace" data-pace>
-          <div class="pace__head">
-            <span class="mono muted">Tempo-calculator</span>
-            <output class="pace__status mono" data-pace-status>onder doel</output>
-          </div>
-          <label class="pace__label" for="pace-range">Eindtijd</label>
-          <output class="pace__finish" for="pace-range" data-pace-finish>2:59:00</output>
-          <input class="pace__range" id="pace-range" type="range" min="9000" max="13500" step="15" value="10740"
-                 aria-describedby="pace-hint" data-pace-range>
-          <div class="pace__scale mono muted" aria-hidden="true"><span>2:30</span><span>3:00</span><span>3:45</span></div>
-          <ul class="pace__splits" role="list">
-            <li><span class="muted">per km</span><b data-pace-km>4:15</b></li>
-            <li><span class="muted">5 km</span><b data-pace-5k>21:13</b></li>
-            <li><span class="muted">halve</span><b data-pace-half>1:29:30</b></li>
-          </ul>
-          <p class="pace__hint muted" id="pace-hint">Sleep om te zien welk tempo bij welke eindtijd hoort.</p>
-        </div>
-      </article>
-    </section>
-
     <!-- ───────────────────────── Werk ───────────────────────── -->
     <section class="section container" id="werk">
       <header class="section__head reveal">
-        <span class="section__index mono">03</span>
+        <span class="section__index mono">02</span>
         <h2>Wat ik <em class="serif">bouw</em></h2>
       </header>
 
       <div class="work-intro reveal">
         <p class="lead">
-          Bij <strong>Republiq</strong> maken we tooling voor woningcorporaties. Met een team van zo'n 45 mensen,
-          waar ontwerpkwaliteit geen bijzaak is maar het verschil maakt.
+          Bij <strong>Republiq</strong> bouw ik met een team van 8 à 10 man tooling voor woningcorporaties.
+          Ontwerpkwaliteit is bij ons geen bijzaak: het maakt het verschil.
         </p>
         <div class="role">
           <span class="mono muted">2021 — nu</span>
@@ -316,17 +255,17 @@
         </article>
       </div>
 
-      <ol class="timeline reveal" aria-label="Mijn pad bij Republiq">
-        <li><span class="mono">Start</span><strong>Front-end</strong><p>Componenten, dashboards en design systems.</p></li>
-        <li><span class="mono">Daarna</span><strong>Back-end</strong><p>Django, API's, databases en performance.</p></li>
-        <li><span class="mono">Nu</span><strong>Data &amp; cloud</strong><p>AWS, Databricks en data pipelines.</p></li>
-      </ol>
+      <ul class="timeline reveal" role="list" aria-label="Wat ik dagelijks doe, over de hele stack">
+        <li><span class="mono">Wat je ziet</span><strong>Front-end</strong><p>Componenten, dashboards, kaarten en design systems.</p></li>
+        <li><span class="mono">Wat het laat werken</span><strong>Back-end</strong><p>Django, API's, databases en performance.</p></li>
+        <li><span class="mono">Waar het op draait</span><strong>Data &amp; cloud</strong><p>AWS, Databricks en data pipelines.</p></li>
+      </ul>
     </section>
 
     <!-- ───────────────────────── Stack ───────────────────────── -->
     <section class="section container" id="stack">
       <header class="section__head reveal">
-        <span class="section__index mono">04</span>
+        <span class="section__index mono">03</span>
         <h2>Stack &amp; <em class="serif">skills</em></h2>
       </header>
 
@@ -357,7 +296,7 @@
     <!-- ───────────────────────── Opleiding ───────────────────────── -->
     <section class="section container" id="cv">
       <header class="section__head reveal">
-        <span class="section__index mono">05</span>
+        <span class="section__index mono">04</span>
         <h2>Opleiding &amp; <em class="serif">certificaten</em></h2>
       </header>
 
@@ -408,15 +347,15 @@
     <!-- ───────────────────────── Buiten werk ───────────────────────── -->
     <section class="section container" id="buiten-werk">
       <header class="section__head reveal">
-        <span class="section__index mono">06</span>
+        <span class="section__index mono">05</span>
         <h2>Buiten <em class="serif">werk</em></h2>
       </header>
 
       <div class="bento">
         <article class="tile tile--tri reveal" data-spotlight>
-          <span class="tile__label mono">Nieuw doel</span>
+          <span class="tile__label mono">Stip op de horizon</span>
           <h3>Triatlon</h3>
-          <p>Volop aan het trainen voor mijn eerste olympische afstand.</p>
+          <p>In januari begin ik met borstcrawl-lessen. Mijn eerste olympische afstand wordt waarschijnlijk iets voor 2028.</p>
           <div class="tri" aria-label="Olympische afstand: 1,5 km zwemmen, 40 km fietsen, 10 km lopen">
             <div class="tri__seg" style="--w:12"><span>Zwemmen</span><b>1,5 km</b></div>
             <div class="tri__seg" style="--w:58"><span>Fietsen</span><b>40 km</b></div>
@@ -428,6 +367,7 @@
           <span class="tile__label mono">Hardlopen</span>
           <div class="big-num"><span>2×</span><small>marathon gelopen</small></div>
           <p>Lange duurlopen, intervallen en tempo's. Hardlopen is mijn manier om mijn hoofd leeg te maken.</p>
+          <a href="#nu" class="link mono tile__more">Volgend doel: sub 3 in Rotterdam ↓</a>
         </article>
 
         <article class="tile tile--bike reveal" data-spotlight>
@@ -476,6 +416,128 @@
           <p>Aan auto, motor of in huis. Als het goed gaat, tenminste.</p>
         </article>
       </div>
+    </section>
+
+    <!-- ───────────────────────── Wedstrijden ───────────────────────── -->
+    <section class="section container" id="wedstrijden">
+      <header class="section__head reveal">
+        <span class="section__index mono">06</span>
+        <h2>Wedstrijden <em class="serif">tot nu</em></h2>
+      </header>
+
+      <div class="races">
+        <div class="races__intro reveal">
+          <p class="lead">Van 6:43 naar 4:13 per kilometer, in drie jaar.</p>
+          <p class="muted">
+            Mijn eerste marathon in Eindhoven ging niet zoals gehoopt. Een jaar later ging het een stuk beter, en
+            de halve van Amsterdam liep ik al sneller dan het tempo dat ik nodig heb voor een marathon onder de drie uur.
+          </p>
+        </div>
+
+        <ol class="race-list reveal" role="list" aria-label="Officiële wedstrijdtijden" data-races>
+          <li class="race" data-seconds="5342" data-km="21.0975" data-label="Halve Amsterdam">
+            <span class="race__date mono muted"><time datetime="2026-10-18">18 okt 2026</time></span>
+            <div class="race__body">
+              <h3>Halve marathon Amsterdam</h3>
+              <span class="race__meta muted">21,1 km · <span data-race-pace>4:13</span> /km</span>
+            </div>
+            <span class="race__time">1:29:02</span>
+            <span class="race__badge mono">onder 1:30</span>
+          </li>
+          <li class="race" data-seconds="14183" data-km="42.195" data-label="Marathon Eindhoven 2024">
+            <span class="race__date mono muted"><time datetime="2024-10-13">13 okt 2024</time></span>
+            <div class="race__body">
+              <h3>Marathon Eindhoven</h3>
+              <span class="race__meta muted">42,2 km · <span data-race-pace>5:36</span> /km</span>
+            </div>
+            <span class="race__time">3:56:23</span>
+            <span class="race__badge mono">PR · onder 4 uur</span>
+          </li>
+          <li class="race" data-seconds="16990" data-km="42.195" data-label="Marathon Eindhoven 2023">
+            <span class="race__date mono muted"><time datetime="2023-10-08">8 okt 2023</time></span>
+            <div class="race__body">
+              <h3>Marathon Eindhoven</h3>
+              <span class="race__meta muted">42,2 km · <span data-race-pace>6:43</span> /km · eerste marathon</span>
+            </div>
+            <span class="race__time">4:43:10</span>
+          </li>
+        </ol>
+
+        <figure class="pace-chart reveal" data-pace-chart data-goal-seconds="10800" data-goal-km="42.195">
+          <figcaption class="pace-chart__title">
+            <strong>Tempo per kilometer</strong>
+            <span class="muted">korter is sneller · lijn = sub-3-marathontempo</span>
+          </figcaption>
+          <div class="pace-chart__plot" data-pace-plot></div>
+          <div class="pace-chart__tooltip" role="tooltip" data-pace-tooltip hidden></div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ───────────────────────── Nu ───────────────────────── -->
+    <section class="section container" id="nu">
+      <header class="section__head reveal">
+        <span class="section__index mono">07</span>
+        <h2>Nu bezig <em class="serif">met</em></h2>
+        <span class="section__meta mono muted">bijgewerkt nov 2026</span>
+      </header>
+
+      <article class="now reveal" data-spotlight>
+        <div class="now__goal">
+          <p class="now__event mono">
+            <span class="pulse" aria-hidden="true"></span>
+            Marathon Rotterdam · zo 11 april 2027 · <span class="now__tag">#demooiste</span>
+          </p>
+          <h3 class="now__title">
+            Sub <span class="now__time">3:00:00</span>
+          </h3>
+
+          <div class="countdown" data-countdown="2027-04-11T10:00:00+02:00" role="timer"
+               aria-label="Aftellen tot de start van de Marathon Rotterdam op zondag 11 april 2027 om 10:00">
+            <div class="countdown__unit"><span class="countdown__value" data-unit="dagen">000</span><span class="countdown__label">dagen</span></div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__unit"><span class="countdown__value" data-unit="uren">00</span><span class="countdown__label">uur</span></div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__unit"><span class="countdown__value" data-unit="minuten">00</span><span class="countdown__label">min</span></div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__unit"><span class="countdown__value" data-unit="seconden">00</span><span class="countdown__label">sec</span></div>
+          </div>
+          <p class="countdown__note mono muted" data-countdown-note>tot het startschot · 10:00 op de Schiedamsedijk</p>
+          <p class="now__text">
+            Na twee marathons en een halve in 1:29:02 is het volgende doel helder: Rotterdam onder de drie uur.
+            Dat betekent het tempo van mijn halve vasthouden, maar dan twee keer zo lang: 42,195 km rond de 4:15 per kilometer. De komende maanden draait alles om
+            kilometers maken, tempoduurlopen en intervallen.
+          </p>
+          <p class="now__next">
+            <span class="mono">Ernaast</span>
+            Vanaf januari borstcrawl-lessen, de eerste stap richting een triatlon in 2028.
+            <a href="#buiten-werk" class="link">Meer buiten werk ↑</a>
+          </p>
+          <dl class="now__facts">
+            <div><dt>Afstand</dt><dd>42,195 km</dd></div>
+            <div><dt>Doeltempo</dt><dd>4:15 /km</dd></div>
+            <div><dt>Doeltijd</dt><dd>&lt; 3:00:00</dd></div>
+          </dl>
+        </div>
+
+        <div class="pace" data-pace>
+          <div class="pace__head">
+            <span class="mono muted">Tempo-calculator</span>
+            <output class="pace__status mono" data-pace-status>onder doel</output>
+          </div>
+          <label class="pace__label" for="pace-range">Eindtijd</label>
+          <output class="pace__finish" for="pace-range" data-pace-finish>2:59:00</output>
+          <input class="pace__range" id="pace-range" type="range" min="9000" max="13500" step="15" value="10740"
+                 aria-describedby="pace-hint" data-pace-range>
+          <div class="pace__scale mono muted" aria-hidden="true"><span>2:30</span><span>3:00</span><span>3:45</span></div>
+          <ul class="pace__splits" role="list">
+            <li><span class="muted">per km</span><b data-pace-km>4:15</b></li>
+            <li><span class="muted">5 km</span><b data-pace-5k>21:13</b></li>
+            <li><span class="muted">halve</span><b data-pace-half>1:29:30</b></li>
+          </ul>
+          <p class="pace__hint muted" id="pace-hint">Sleep om te zien welk tempo bij welke eindtijd hoort.</p>
+        </div>
+      </article>
     </section>
 
     <!-- ───────────────────────── Contact ───────────────────────── -->
