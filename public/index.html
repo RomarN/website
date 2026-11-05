@@ -66,6 +66,7 @@
     <nav aria-label="Hoofdnavigatie">
       <ul class="nav__links">
         <li><a href="#over">Over</a></li>
+        <li><a href="#nu">Nu</a></li>
         <li><a href="#werk">Werk</a></li>
         <li><a href="#stack">Stack</a></li>
         <li><a href="#buiten-werk">Buiten werk</a></li>
@@ -142,11 +143,11 @@
       <div class="marquee__track">
         <ul>
           <li>Django</li><li>React</li><li>TypeScript</li><li>Python</li><li>Vanilla JS</li>
-          <li>AWS</li><li>Databricks</li><li>dbt</li><li>Snowflake</li><li>MySQL</li><li>PostgreSQL</li><li>Docker</li>
+          <li>AWS</li><li>Databricks</li><li>MySQL</li><li>PostgreSQL</li><li>Docker</li>
         </ul>
         <ul aria-hidden="true">
           <li>Django</li><li>React</li><li>TypeScript</li><li>Python</li><li>Vanilla JS</li>
-          <li>AWS</li><li>Databricks</li><li>dbt</li><li>Snowflake</li><li>MySQL</li><li>PostgreSQL</li><li>Docker</li>
+          <li>AWS</li><li>Databricks</li><li>MySQL</li><li>PostgreSQL</li><li>Docker</li>
         </ul>
       </div>
     </div>
@@ -198,10 +199,71 @@
       </div>
     </section>
 
+    <!-- ───────────────────────── Nu ───────────────────────── -->
+    <section class="section container" id="nu">
+      <header class="section__head reveal">
+        <span class="section__index mono">02</span>
+        <h2>Nu bezig <em class="serif">met</em></h2>
+        <span class="section__meta mono muted">bijgewerkt nov 2026</span>
+      </header>
+
+      <article class="now reveal" data-spotlight>
+        <div class="now__goal">
+          <p class="now__event mono">
+            <span class="pulse" aria-hidden="true"></span>
+            Marathon Rotterdam · zo 11 april 2027 · <span class="now__tag">#demooiste</span>
+          </p>
+          <h3 class="now__title">
+            Sub <span class="now__time">3:00:00</span>
+          </h3>
+
+          <div class="countdown" data-countdown="2027-04-11T10:00:00+02:00" role="timer"
+               aria-label="Aftellen tot de start van de Marathon Rotterdam op zondag 11 april 2027 om 10:00">
+            <div class="countdown__unit"><span class="countdown__value" data-unit="dagen">000</span><span class="countdown__label">dagen</span></div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__unit"><span class="countdown__value" data-unit="uren">00</span><span class="countdown__label">uur</span></div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__unit"><span class="countdown__value" data-unit="minuten">00</span><span class="countdown__label">min</span></div>
+            <span class="countdown__sep" aria-hidden="true">:</span>
+            <div class="countdown__unit"><span class="countdown__value" data-unit="seconden">00</span><span class="countdown__label">sec</span></div>
+          </div>
+          <p class="countdown__note mono muted" data-countdown-note>tot het startschot · 10:00 op de Schiedamsedijk</p>
+          <p class="now__text">
+            Na twee marathons is het volgende doel helder: Rotterdam onder de drie uur.
+            Dat betekent 42,195 km lang elke kilometer rond de 4:15. De komende maanden draait alles om
+            kilometers maken, tempoduurlopen en intervallen.
+          </p>
+          <dl class="now__facts">
+            <div><dt>Afstand</dt><dd>42,195 km</dd></div>
+            <div><dt>Doeltempo</dt><dd>4:15 /km</dd></div>
+            <div><dt>Doeltijd</dt><dd>&lt; 3:00:00</dd></div>
+          </dl>
+        </div>
+
+        <div class="pace" data-pace>
+          <div class="pace__head">
+            <span class="mono muted">Tempo-calculator</span>
+            <output class="pace__status mono" data-pace-status>onder doel</output>
+          </div>
+          <label class="pace__label" for="pace-range">Eindtijd</label>
+          <output class="pace__finish" for="pace-range" data-pace-finish>2:59:00</output>
+          <input class="pace__range" id="pace-range" type="range" min="9000" max="13500" step="15" value="10740"
+                 aria-describedby="pace-hint" data-pace-range>
+          <div class="pace__scale mono muted" aria-hidden="true"><span>2:30</span><span>3:00</span><span>3:45</span></div>
+          <ul class="pace__splits" role="list">
+            <li><span class="muted">per km</span><b data-pace-km>4:15</b></li>
+            <li><span class="muted">5 km</span><b data-pace-5k>21:13</b></li>
+            <li><span class="muted">halve</span><b data-pace-half>1:29:30</b></li>
+          </ul>
+          <p class="pace__hint muted" id="pace-hint">Sleep om te zien welk tempo bij welke eindtijd hoort.</p>
+        </div>
+      </article>
+    </section>
+
     <!-- ───────────────────────── Werk ───────────────────────── -->
     <section class="section container" id="werk">
       <header class="section__head reveal">
-        <span class="section__index mono">02</span>
+        <span class="section__index mono">03</span>
         <h2>Wat ik <em class="serif">bouw</em></h2>
       </header>
 
@@ -257,14 +319,14 @@
       <ol class="timeline reveal" aria-label="Mijn pad bij Republiq">
         <li><span class="mono">Start</span><strong>Front-end</strong><p>Componenten, dashboards en design systems.</p></li>
         <li><span class="mono">Daarna</span><strong>Back-end</strong><p>Django, API's, databases en performance.</p></li>
-        <li><span class="mono">Nu</span><strong>Data &amp; cloud</strong><p>AWS, Databricks, dbt en Snowflake.</p></li>
+        <li><span class="mono">Nu</span><strong>Data &amp; cloud</strong><p>AWS, Databricks en data pipelines.</p></li>
       </ol>
     </section>
 
     <!-- ───────────────────────── Stack ───────────────────────── -->
     <section class="section container" id="stack">
       <header class="section__head reveal">
-        <span class="section__index mono">03</span>
+        <span class="section__index mono">04</span>
         <h2>Stack &amp; <em class="serif">skills</em></h2>
       </header>
 
@@ -286,8 +348,6 @@
         <li data-cat="be" data-spotlight><span class="mono">Pg</span>PostgreSQL</li>
         <li data-cat="data" data-spotlight><span class="mono">☁</span>AWS</li>
         <li data-cat="data" data-spotlight><span class="mono">Db</span>Databricks</li>
-        <li data-cat="data" data-spotlight><span class="mono">dbt</span>dbt</li>
-        <li data-cat="data" data-spotlight><span class="mono">❄</span>Snowflake</li>
         <li data-cat="be data" data-spotlight><span class="mono">Dk</span>Docker</li>
         <li data-cat="fe be data" data-spotlight><span class="mono">Gt</span>Git</li>
         <li data-cat="data" data-spotlight><span class="mono">ML</span>Machine learning</li>
@@ -297,7 +357,7 @@
     <!-- ───────────────────────── Opleiding ───────────────────────── -->
     <section class="section container" id="cv">
       <header class="section__head reveal">
-        <span class="section__index mono">04</span>
+        <span class="section__index mono">05</span>
         <h2>Opleiding &amp; <em class="serif">certificaten</em></h2>
       </header>
 
@@ -348,7 +408,7 @@
     <!-- ───────────────────────── Buiten werk ───────────────────────── -->
     <section class="section container" id="buiten-werk">
       <header class="section__head reveal">
-        <span class="section__index mono">05</span>
+        <span class="section__index mono">06</span>
         <h2>Buiten <em class="serif">werk</em></h2>
       </header>
 
@@ -366,8 +426,8 @@
 
         <article class="tile tile--run reveal" data-spotlight>
           <span class="tile__label mono">Hardlopen</span>
-          <div class="big-num"><span>3:30</span><small>marathon-doel</small></div>
-          <p>Twee marathons gelopen. Ooit nog onder de 3:30 — met een strak trainingsschema.</p>
+          <div class="big-num"><span>2×</span><small>marathon gelopen</small></div>
+          <p>Lange duurlopen, intervallen en tempo's. Hardlopen is mijn manier om mijn hoofd leeg te maken.</p>
         </article>
 
         <article class="tile tile--bike reveal" data-spotlight>

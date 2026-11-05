@@ -4,6 +4,8 @@
  */
 import { init_contours } from './contours.js';
 import { init_palette } from './palette.js';
+import { init_pace_calculator } from './pace.js';
+import { init_countdown } from './countdown.js';
 
 const reduced_motion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine_pointer = matchMedia('(pointer: fine)').matches;
@@ -90,16 +92,9 @@ function init_nav () {
   }, { passive: true });
 
   const nav_links = new Map(select_all('.nav__links a').map((link) => [link.hash.slice(1), link]));
+  // Bewust geen View Transition hier: die maakt tijdens het scrollen een snapshot van de hele pagina (stotter op mobiel)
   const set_active = (section_id) => {
-    const update = () => {
-      nav_links.forEach((link, key) => link.setAttribute('aria-current', String(key == section_id)));
-    };
-    const can_animate = document.startViewTransition != null && reduced_motion == false;
-    if (can_animate == true && document.visibilityState == 'visible') {
-      document.startViewTransition(update);
-    } else {
-      update();
-    }
+    nav_links.forEach((link, key) => link.setAttribute('aria-current', String(key == section_id)));
   };
 
   let current_id = null;
@@ -487,5 +482,7 @@ init_stack_filter();
 init_lap_timer();
 init_copy_email();
 init_mod_key();
-init_contours(document.querySelector('[data-contours]'), reduced_motion);
+init_pace_calculator();
+init_countdown(reduced_motion);
+init_contours(document.querySelector('[data-contours]'), { reduced_motion, is_licht: fine_pointer == false });
 init_palette({ toggle_theme, copy_email, show_toast });

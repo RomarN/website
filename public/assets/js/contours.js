@@ -3,7 +3,6 @@
  * Hoogteveld = som van sinussen met domain warp + een "heuvel" onder de cursor.
  */
 
-const cel_grootte = 16;
 const niveaus = [-1.4, -1.15, -0.9, -0.65, -0.4, -0.15, 0.1, 0.35, 0.6, 0.85, 1.1, 1.35, 1.6];
 const accent_niveau = 0.6;
 
@@ -57,10 +56,10 @@ function interpoleer (a, b, drempel) {
  * @param {number} kolommen
  * @param {number} rijen
  * @param {number} drempel
+ * @param {number} c - Celgrootte in CSS-pixels
  * @returns {void}
  */
-function teken_niveau (ctx, veld, kolommen, rijen, drempel) {
-  const c = cel_grootte;
+function teken_niveau (ctx, veld, kolommen, rijen, drempel, c) {
   for (let j = 0; j < rijen - 1; j++) {
     for (let i = 0; i < kolommen - 1; i++) {
       const tl = veld[j * kolommen + i];
@@ -102,11 +101,21 @@ function get_kleuren () {
 /**
  * Start de contour-animatie op een canvas
  * @param {HTMLCanvasElement} canvas
- * @param {boolean} reduced_motion - Bij true: één statisch frame
+ * @param {{reduced_motion: boolean, is_licht: boolean}} opties
+ *   reduced_motion: één statisch frame. is_licht: touch-apparaat, dus grovere grid, lagere resolutie,
+ *   30 fps en pauze tijdens scrollen zodat scrollen vloeiend blijft.
  * @returns {void}
  */
-export function init_contours (canvas, reduced_motion) {
+export function init_contours (canvas, opties) {
   if (canvas == null) return;
+  const { reduced_motion, is_licht } = opties;
+  const cel_grootte = is_licht == true ? 22 : 16;
+  const max_dpr = is_licht == true ? 1.5 : 2;
+  const frame_interval_ms = is_licht == true ? 1000 / 30 : 0;
+  let laatste_frame_ms = 0;
+  let laatste_scroll_ms = 0;
+  let canvas_breedte = 0;
+  let canvas_hoogte = 0;
   const ctx = canvas.getContext('2d');
   const cursor = { x: 0, y: 0, kracht: 0, doel: 0 };
   let kolommen = 0;
@@ -117,8 +126,11 @@ export function init_contours (canvas, reduced_motion) {
   let raf_id = 0;
 
   const resize = () => {
-    const dpr = Math.min(devicePixelRatio, 2);
+    const dpr = Math.min(devicePixelRatio, max_dpr);
     const { width, height } = canvas.getBoundingClientRect();
+    if (width == canvas_breedte && height == canvas_hoogte) return;
+    canvas_breedte = width;
+    canvas_hoogte = height;
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -141,7 +153,7 @@ export function init_contours (canvas, reduced_motion) {
     ctx.lineWidth = 1;
     for (const niveau of niveaus) {
       ctx.beginPath();
-      teken_niveau(ctx, veld, kolommen, rijen, niveau);
+      teken_niveau(ctx, veld, kolommen, rijen, niveau, cel_grootte);
       const is_accent = niveau == accent_niveau;
       ctx.strokeStyle = is_accent ? kleuren.accent : kleuren.lijn;
       ctx.globalAlpha = is_accent ? 0.35 : 1;
@@ -151,7 +163,11 @@ export function init_contours (canvas, reduced_motion) {
   };
 
   const loop = (tijd_ms) => {
-    teken(tijd_ms);
+    const is_scrollend = is_licht == true && tijd_ms - laatste_scroll_ms < 200;
+    if (is_scrollend == false && tijd_ms - laatste_frame_ms >= frame_interval_ms) {
+      laatste_frame_ms = tijd_ms;
+      teken(tijd_ms);
+    }
     if (zichtbaar == true && document.hidden == false) raf_id = requestAnimationFrame(loop);
   };
 
@@ -176,6 +192,10 @@ export function init_contours (canvas, reduced_motion) {
     zichtbaar = entry.isIntersecting;
     if (zichtbaar == true) start();
   }).observe(canvas);
+
+  if (is_licht == true) {
+    addEventListener('scroll', () => { laatste_scroll_ms = performance.now(); }, { passive: true });
+  }
 
   document.addEventListener('visibilitychange', () => { if (document.hidden == false) start(); });
 
