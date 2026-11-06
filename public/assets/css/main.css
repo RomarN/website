@@ -611,6 +611,9 @@
     font-variant-numeric: tabular-nums;
     background: linear-gradient(100deg, var(--accent), var(--accent-2));
     -webkit-background-clip: text; background-clip: text; color: transparent;
+    /* Door de negatieve letter-spacing steekt de laatste 0 buiten het vak waarin de gradient getekend wordt:
+       ruimte rechts erbij, en met een negatieve marge weer weg zodat de opmaak niet verschuift */
+    padding-right: .08em; margin-right: -.08em;
   }
   .now__text { color: var(--fg-muted); max-width: 46ch; }
   .now__next {
