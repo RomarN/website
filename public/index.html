@@ -300,6 +300,37 @@
           </div>
         </div>
       </article>
+
+      <article class="project reveal" data-spotlight>
+        <a class="project__visual" href="https://run.nathoe.nl" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <img src="assets/img/run-dashboard.webp" width="1200" height="760" loading="lazy" decoding="async" alt="">
+        </a>
+        <div class="project__body">
+          <div class="project__brand">
+            <span class="project__logo project__logo--run mono" aria-hidden="true">4:15</span>
+            <div>
+              <h3 class="project__name--run">run<span>.nathoe.nl</span></h3>
+              <span class="mono muted">Hardloopdashboard · 2026</span>
+            </div>
+          </div>
+          <p>
+            Mijn weg naar een marathon onder de 3 uur, in data. Kilometers per week en per intensiteit, mijn tempo bij
+            dezelfde hartslag, waar mijn tempo inzakt per afstand, een heatmap van al mijn routes en alle wedstrijden en
+            persoonlijke records.
+          </p>
+          <p>
+            Een Python-pipeline leest de ruwe export en de FIT-bestanden van mijn Garmin, rekent alles vooraf uit en
+            publiceert kleine JSON-bestanden. Rond mijn huis ligt een vaste privacyzone: daarbinnen gaat geen enkel
+            GPS-punt online, en dat wordt bij elke deploy getest.
+          </p>
+          <ul class="project__tags mono" role="list" aria-label="Gebouwd met">
+            <li>Python</li><li>pandas</li><li>Parquet</li><li>Vanilla JS</li><li>Leaflet</li><li>S3 + CloudFront</li>
+          </ul>
+          <div class="project__actions">
+            <a class="btn btn--primary" href="https://run.nathoe.nl" target="_blank" rel="noopener" data-magnetic>Bekijk het dashboard ↗</a>
+          </div>
+        </div>
+      </article>
     </section>
 
     <!-- ───────────────────────── Stack ───────────────────────── -->
@@ -491,7 +522,7 @@
             Na twee marathons en een halve in 1:29:02 is het volgende doel helder: Rotterdam onder de drie uur.
             Dat betekent het tempo van mijn halve vasthouden, maar dan twee keer zo lang: 42,195 km rond de 4:15 per kilometer. De komende maanden draait alles om
             kilometers maken, tempoduurlopen en intervallen.
-            <a href="#wedstrijden" class="link">Bekijk mijn tijden tot nu ↓</a>
+            <a href="https://run.nathoe.nl" class="link" target="_blank" rel="noopener">Tijden, kilometers en routes op run.nathoe.nl ↗</a>
           </p>
           <p class="now__next">
             <span class="mono">Ernaast</span>
@@ -523,173 +554,6 @@
           <p class="pace__hint muted" id="pace-hint">Sleep om te zien welk tempo bij welke eindtijd hoort.</p>
         </div>
       </article>
-    </section>
-
-    <!-- ───────────────────────── Wedstrijden ───────────────────────── -->
-    <section class="section container" id="wedstrijden">
-      <header class="section__head reveal">
-        <span class="section__index mono">08</span>
-        <h2>Wedstrijden <em class="serif">tot nu</em></h2>
-      </header>
-
-      <div class="races">
-        <div class="races__intro reveal">
-          <p class="lead">Halve: 36 minuten sneller. Hele: bijna 47 minuten sneller.</p>
-          <p class="muted">
-            Mijn eerste halve liep ik in 2017 in Hoogland. Mijn eerste marathon in Eindhoven ging niet zoals gehoopt,
-            een jaar later ging het een stuk beter. En de halve van Amsterdam liep ik al sneller dan de 4:15 per kilometer
-            die ik in Rotterdam nodig heb.
-          </p>
-        </div>
-
-        <div class="race-list reveal" aria-label="Officiële wedstrijdtijden" data-races>
-          <section class="race-group" data-group="Hele marathon">
-            <h3 class="race-group__title"><span class="race-group__dot race-group__dot--full" aria-hidden="true"></span>Hele marathon <span class="mono muted">42,195 km</span></h3>
-            <ol role="list">
-              <li class="race" data-seconds="14183" data-km="42.195" data-label="Eindhoven 2024">
-                <span class="race__date mono muted"><time datetime="2024-10-13">13 okt 2024</time></span>
-                <div class="race__body">
-                  <h4>Marathon Eindhoven</h4>
-                  <span class="race__meta muted"><span data-race-pace>5:36</span> /km</span>
-                </div>
-                <span class="race__time">3:56:23</span>
-                <span class="race__badge mono">PR · onder 4 uur</span>
-              </li>
-              <li class="race" data-seconds="16990" data-km="42.195" data-label="Eindhoven 2023">
-                <span class="race__date mono muted"><time datetime="2023-10-08">8 okt 2023</time></span>
-                <div class="race__body">
-                  <h4>Marathon Eindhoven</h4>
-                  <span class="race__meta muted"><span data-race-pace>6:43</span> /km · eerste marathon</span>
-                </div>
-                <span class="race__time">4:43:10</span>
-              </li>
-            </ol>
-          </section>
-
-          <section class="race-group" data-group="Halve marathon">
-            <h3 class="race-group__title"><span class="race-group__dot race-group__dot--half" aria-hidden="true"></span>Halve marathon <span class="mono muted">21,1 km</span></h3>
-            <ol role="list">
-              <li class="race" data-seconds="5342" data-km="21.0975" data-label="Amsterdam 2026">
-                <span class="race__date mono muted"><time datetime="2026-10-18">18 okt 2026</time></span>
-                <div class="race__body">
-                  <h4>Halve marathon Amsterdam</h4>
-                  <span class="race__meta muted"><span data-race-pace>4:13</span> /km</span>
-                </div>
-                <span class="race__time">1:29:02</span>
-                <span class="race__badge mono">PR · onder 1:30</span>
-              </li>
-              <li class="race" data-seconds="7517" data-km="21.0975" data-label="Hoogland 2017">
-                <span class="race__date mono muted"><time datetime="2017-09-17">17 sep 2017</time></span>
-                <div class="race__body">
-                  <h4>Halve van Hoogland</h4>
-                  <span class="race__meta muted"><span data-race-pace>5:56</span> /km · eerste halve</span>
-                </div>
-                <span class="race__time">2:05:17</span>
-              </li>
-            </ol>
-          </section>
-        </div>
-
-        <figure class="pace-chart reveal" data-pace-chart data-goal-seconds="10800" data-goal-km="42.195">
-          <figcaption class="pace-chart__title">
-            <strong>Tempo per kilometer</strong>
-            <span class="muted">korter is sneller · lijn = sub-3-marathontempo</span>
-          </figcaption>
-          <div class="pace-chart__plot" data-pace-plot></div>
-          <div class="pace-chart__tooltip" role="tooltip" data-pace-tooltip hidden></div>
-        </figure>
-
-        <div class="prs reveal">
-          <div class="prs__head">
-            <h3>Persoonlijke records</h3>
-            <p class="muted">
-              Tot en met de halve houd ik rond de 4:13 per kilometer vast. Daarna zakt het in: op 30 km is het al 5:13.
-              Voor Rotterdam moet de 4:15 de hele 42 km blijven staan.
-            </p>
-            <p class="prs__legend mono muted"><span class="prs__legend-bar" aria-hidden="true"></span> tempo per km · streep = doel 4:15</p>
-          </div>
-          <ol class="prs__grid" role="list" aria-label="Persoonlijke records per afstand">
-          <li class="pr" style="--x:30.4%">
-            <span class="pr__dist mono">400 m</span>
-            <span class="pr__time">51 s</span>
-            <span class="pr__pace muted">2:08 /km</span>
-            <span class="pr__bar" aria-hidden="true"></span>
-          </li>
-          <li class="pr" style="--x:53.0%">
-            <span class="pr__dist mono">Halve mijl</span>
-            <span class="pr__time">2:59</span>
-            <span class="pr__pace muted">3:42 /km</span>
-            <span class="pr__bar" aria-hidden="true"></span>
-          </li>
-          <li class="pr" style="--x:54.5%">
-            <span class="pr__dist mono">1 km</span>
-            <span class="pr__time">3:49</span>
-            <span class="pr__pace muted">3:49 /km</span>
-            <span class="pr__bar" aria-hidden="true"></span>
-          </li>
-          <li class="pr" style="--x:55.3%">
-            <span class="pr__dist mono">1 mijl</span>
-            <span class="pr__time">6:14</span>
-            <span class="pr__pace muted">3:52 /km</span>
-            <span class="pr__bar" aria-hidden="true"></span>
-          </li>
-          <li class="pr" style="--x:55.6%">
-            <span class="pr__dist mono">2 mijl</span>
-            <span class="pr__time">12:31</span>
-            <span class="pr__pace muted">3:53 /km</span>
-            <span class="pr__bar" aria-hidden="true"></span>
-          </li>
-          <li class="pr" style="--x:55.5%">
-            <span class="pr__dist mono">5 km</span>
-            <span class="pr__time">19:25</span>
-            <span class="pr__pace muted">3:53 /km</span>
-            <span class="pr__bar" aria-hidden="true"></span>
-          </li>
-          <li class="pr" style="--x:59.8%">
-            <span class="pr__dist mono">10 km</span>
-            <span class="pr__time">41:51</span>
-            <span class="pr__pace muted">4:11 /km</span>
-            <span class="pr__bar" aria-hidden="true"></span>
-          </li>
-          <li class="pr" style="--x:60.2%">
-            <span class="pr__dist mono">15 km</span>
-            <span class="pr__time">1:03:12</span>
-            <span class="pr__pace muted">4:13 /km</span>
-            <span class="pr__bar" aria-hidden="true"></span>
-          </li>
-          <li class="pr" style="--x:60.3%">
-            <span class="pr__dist mono">10 mijl</span>
-            <span class="pr__time">1:07:56</span>
-            <span class="pr__pace muted">4:13 /km</span>
-            <span class="pr__bar" aria-hidden="true"></span>
-          </li>
-          <li class="pr" style="--x:60.3%">
-            <span class="pr__dist mono">20 km</span>
-            <span class="pr__time">1:24:27</span>
-            <span class="pr__pace muted">4:13 /km</span>
-            <span class="pr__bar" aria-hidden="true"></span>
-          </li>
-          <li class="pr" style="--x:60.3%">
-            <span class="pr__dist mono">Halve marathon</span>
-            <span class="pr__time">1:29:02</span>
-            <span class="pr__pace muted">4:13 /km</span>
-            <span class="pr__bar" aria-hidden="true"></span>
-          </li>
-          <li class="pr pr--slower" style="--x:74.4%">
-            <span class="pr__dist mono">30 km</span>
-            <span class="pr__time">2:36:20</span>
-            <span class="pr__pace muted">5:13 /km</span>
-            <span class="pr__bar" aria-hidden="true"></span>
-          </li>
-          <li class="pr pr--slower" style="--x:80.0%">
-            <span class="pr__dist mono">Marathon</span>
-            <span class="pr__time">3:56:23</span>
-            <span class="pr__pace muted">5:36 /km</span>
-            <span class="pr__bar" aria-hidden="true"></span>
-          </li>
-          </ol>
-        </div>
-      </div>
     </section>
 
     <!-- ───────────────────────── Contact ───────────────────────── -->

@@ -6,7 +6,6 @@ import { init_contours } from './contours.js';
 import { init_palette } from './palette.js';
 import { init_pace_calculator } from './pace.js';
 import { init_countdown } from './countdown.js';
-import { init_race_chart } from './races.js';
 
 const reduced_motion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine_pointer = matchMedia('(pointer: fine)').matches;
@@ -485,6 +484,5 @@ init_copy_email();
 init_mod_key();
 init_pace_calculator();
 init_countdown(reduced_motion);
-init_race_chart();
 init_contours(document.querySelector('[data-contours]'), { reduced_motion, is_licht: fine_pointer == false });
 init_palette({ toggle_theme, copy_email, show_toast });

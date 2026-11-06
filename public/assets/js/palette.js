@@ -40,12 +40,11 @@ function get_commandos (acties) {
     { groep: 'Navigeer', label: 'Home', icoon: '~', hint: 'g h', actie: ga_naar('#top') },
     { groep: 'Navigeer', label: 'Over mij', icoon: '01', trefwoorden: 'about tue jads', actie: ga_naar('#over') },
     { groep: 'Navigeer', label: 'Wat ik bouw', icoon: '02', trefwoorden: 'werk republiq pien willm', actie: ga_naar('#werk') },
-    { groep: 'Navigeer', label: 'Eigen projecten', icoon: '03', trefwoorden: 'clueuntry puzzel landen game hobby', actie: ga_naar('#projecten') },
+    { groep: 'Navigeer', label: 'Eigen projecten', icoon: '03', trefwoorden: 'clueuntry puzzel landen game hobby hardlopen dashboard', actie: ga_naar('#projecten') },
     { groep: 'Navigeer', label: 'Stack & skills', icoon: '04', trefwoorden: 'django react python aws', actie: ga_naar('#stack') },
     { groep: 'Navigeer', label: 'Opleiding & certificaten', icoon: '05', trefwoorden: 'cv studie', actie: ga_naar('#cv') },
     { groep: 'Navigeer', label: 'Buiten werk', icoon: '06', trefwoorden: 'hobby fiets triatlon gitaar', actie: ga_naar('#buiten-werk') },
     { groep: 'Navigeer', label: 'Nu bezig met', icoon: '07', trefwoorden: 'marathon rotterdam hardlopen tempo', actie: ga_naar('#nu') },
-    { groep: 'Navigeer', label: 'Wedstrijden', icoon: '08', trefwoorden: 'marathon eindhoven amsterdam hoogland halve tijden pr', actie: ga_naar('#wedstrijden') },
     { groep: 'Navigeer', label: 'Contact', icoon: '@', actie: ga_naar('#contact') },
     { groep: 'Acties', label: 'Wissel thema', icoon: '◐', hint: 'T', trefwoorden: 'dark light donker licht', actie: () => acties.toggle_theme() },
     { groep: 'Acties', label: 'Kopieer e-mailadres', icoon: '⧉', trefwoorden: 'mail', actie: () => acties.copy_email() },
@@ -61,6 +60,8 @@ function get_commandos (acties) {
         acties.show_toast('Link gekopieerd');
       }
     },
+    { groep: 'Links', label: 'Hardloopdashboard', icoon: 'run', trefwoorden: 'run.nathoe.nl marathon wedstrijden tijden pr records kilometers', actie: open_link('https://run.nathoe.nl') },
+    { groep: 'Links', label: 'Clueuntry', icoon: 'cl', trefwoorden: 'puzzel landen spel', actie: open_link('https://clueuntry.nathoe.nl') },
     { groep: 'Links', label: 'LinkedIn', icoon: 'in', actie: open_link('https://www.linkedin.com/in/romar-nathoe/') },
     { groep: 'Links', label: 'GitHub', icoon: 'gh', actie: open_link('https://github.com/RomarN') },
     { groep: 'Links', label: 'Republiq', icoon: 'R', actie: open_link('https://www.republiq.nl') },

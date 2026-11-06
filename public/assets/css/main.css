@@ -586,170 +586,6 @@
     .stats li:nth-child(n+3) { border-top: 1px solid var(--border); }
   }
 
-  /* ================= WEDSTRIJDEN ================= */
-  .races {
-    display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3rem) clamp(2rem, 5vw, 4rem);
-    align-items: start;
-  }
-  .races__intro { grid-column: 1 / -1; display: grid; gap: .75rem; max-width: 52rem; }
-  @media (max-width: 960px) { .races { grid-template-columns: 1fr; } }
-
-  .race-list { display: grid; gap: 2rem; }
-  .race-group__title {
-    display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem;
-    font-size: .95rem; letter-spacing: -.01em;
-  }
-  .race-group__title .mono { margin-left: auto; }
-  /* Hele = massief, halve = gearceerd: zelfde codering als in de grafiek */
-  .race-group__dot { width: .8rem; height: .8rem; border-radius: 3px; flex: none; }
-  .race-group__dot--full { background: var(--accent); }
-  .race-group__dot--half {
-    background: repeating-linear-gradient(135deg, var(--accent) 0 2px, transparent 2px 4px);
-    box-shadow: inset 0 0 0 1.5px var(--accent);
-  }
-  .race {
-    display: grid; grid-template-columns: 6.5rem 1fr auto; align-items: center; gap: .25rem 1.25rem;
-    padding-block: 1.25rem; border-bottom: 1px solid var(--border);
-  }
-  .race:first-child { border-top: 1px solid var(--border); }
-  .race__body h4 { font-size: 1.05rem; font-weight: 600; letter-spacing: -.02em; }
-  .race__meta { font-size: .85rem; }
-  .race__time {
-    font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; letter-spacing: -.04em; line-height: 1;
-    font-variant-numeric: tabular-nums; text-align: right;
-  }
-  .race__badge {
-    grid-column: 2 / -1; justify-self: start;
-    padding: .15rem .55rem; border-radius: 999px; font-size: .7rem;
-    background: color-mix(in oklab, var(--accent) 14%, transparent); color: var(--accent);
-  }
-  @media (max-width: 560px) {
-    .race { grid-template-columns: 1fr auto; }
-    .race__date { grid-column: 1 / -1; }
-    .race__badge { grid-column: 1 / -1; }
-  }
-
-  .pace-chart {
-    --label-w: 11rem;
-    position: relative;
-    padding: 1.5rem 1.5rem 2.75rem;
-    border: 1px solid var(--border); border-radius: var(--radius-lg);
-    background: var(--surface);
-  }
-  .pace-chart__title { display: grid; gap: .2rem; margin-bottom: 2.75rem; }
-  .pace-chart__title strong { font-weight: 600; letter-spacing: -.02em; }
-  .pace-chart__title span { font-size: .8rem; }
-
-  .pace-chart__plot { position: relative; display: grid; gap: .35rem; }
-
-  /* Gridlijnen + doellijn liggen over de staafkolom heen */
-  .pace-chart__grid, .pace-chart__goal { position: absolute; top: -.5rem; bottom: -.5rem; left: var(--label-w); right: 3.25rem; pointer-events: none; }
-  .pace-chart__grid span {
-    position: absolute; top: 0; bottom: 0; left: var(--x); width: 1px;
-    background: var(--border);
-  }
-  .pace-chart__grid span::after {
-    content: attr(data-tick);
-    position: absolute; top: calc(100% + .5rem); translate: -50% 0;
-    font-family: var(--font-mono); font-size: .68rem; color: var(--fg-faint);
-  }
-  .pace-chart__goal::before {
-    content: ''; position: absolute; top: -.25rem; bottom: 0; left: var(--x); width: 0;
-    border-left: 1.5px dashed var(--fg-muted);
-  }
-  .pace-chart__goal::after {
-    content: attr(data-label);
-    position: absolute; bottom: calc(100% + .35rem); left: var(--x); translate: -50% 0;
-    padding: .1rem .45rem; border-radius: 999px; border: 1px solid var(--border-strong); background: var(--bg);
-    font-family: var(--font-mono); font-size: .68rem; color: var(--fg); white-space: nowrap;
-  }
-
-  .pace-chart__row {
-    display: grid; grid-template-columns: var(--label-w) 1fr; align-items: center;
-    min-height: 2.75rem; border-radius: 8px; cursor: default;
-    outline-offset: 2px;
-    transition: opacity .25s;
-  }
-  .pace-chart__row[data-dim] { opacity: .35; }
-  .pace-chart__group {
-    font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em;
-    color: var(--fg-faint); padding-top: .5rem;
-  }
-  .pace-chart__group + .pace-chart__row { margin-top: -.25rem; }
-  .pace-chart__row + .pace-chart__group { margin-top: .75rem; padding-top: .9rem; border-top: 1px solid var(--border); }
-  .pace-chart__row--half .pace-chart__bar {
-    background: repeating-linear-gradient(135deg, var(--accent) 0 3px, color-mix(in oklab, var(--accent) 35%, transparent) 3px 6px);
-  }
-  .pace-chart__label { font-size: .85rem; color: var(--fg-muted); padding-right: 1rem; line-height: 1.25; }
-  .pace-chart__track { position: relative; height: 100%; margin-right: 3.25rem; }
-  .pace-chart__bar {
-    position: absolute; left: 0; top: 50%; translate: 0 -50%;
-    width: var(--x); height: 12px;
-    border-radius: 0 4px 4px 0;
-    background: var(--accent);
-    transform-origin: left; scale: 0 1;
-    transition: scale 1.1s var(--ease-out) var(--delay, 0ms);
-  }
-  .pace-chart__value {
-    position: absolute; top: 50%; left: calc(var(--x) + .5rem); translate: 0 -50%;
-    font-size: .85rem; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--fg);
-    opacity: 0; transition: opacity .4s calc(var(--delay, 0ms) + .7s);
-  }
-  .pace-chart[data-visible] .pace-chart__bar { scale: 1 1; }
-  .pace-chart[data-visible] .pace-chart__value { opacity: 1; }
-
-  .pace-chart__tooltip {
-    position: absolute; z-index: 5; left: var(--tx); top: var(--ty);
-    translate: -50% calc(-100% - .6rem);
-    padding: .6rem .8rem; border-radius: var(--radius-sm);
-    background: var(--fg); color: var(--bg);
-    width: max-content; max-width: min(280px, 80vw);
-    font-size: .78rem; line-height: 1.45; white-space: pre-line; pointer-events: none;
-    box-shadow: var(--shadow);
-  }
-  .pace-chart__tooltip[hidden] { display: none; }
-
-  @media (max-width: 560px) {
-    .pace-chart { --label-w: 7.25rem; padding: 1.25rem 1rem 2.5rem; }
-    .pace-chart__label { font-size: .75rem; }
-  }
-
-  /* Persoonlijke records: kleine multiples met dezelfde tempo-schaal (0 – 7:00/km) */
-  .prs { grid-column: 1 / -1; display: grid; gap: 1.5rem; margin-top: 1rem; }
-  .prs__head { display: grid; grid-template-columns: auto 1fr auto; gap: .5rem 2rem; align-items: baseline; }
-  .prs__head h3 { font-size: 1.5rem; }
-  .prs__head p { max-width: 60ch; font-size: .95rem; }
-  .prs__legend { display: inline-flex; align-items: center; gap: .5rem; font-size: .72rem; white-space: nowrap; }
-  .prs__legend-bar {
-    position: relative; width: 2.5rem; height: 4px; border-radius: 0 4px 4px 0; background: var(--accent);
-  }
-  .prs__legend-bar::after { content: ''; position: absolute; left: 75%; top: -4px; bottom: -4px; width: 1.5px; background: var(--fg-muted); }
-  @media (max-width: 960px) { .prs__head { grid-template-columns: 1fr; } }
-
-  .prs__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: .6rem; }
-  .pr {
-    position: relative; display: grid; gap: .15rem;
-    padding: .9rem 1rem 1.1rem;
-    border: 1px solid var(--border); border-radius: var(--radius);
-    background: var(--surface);
-  }
-  .pr__dist { color: var(--fg-faint); font-size: .72rem; }
-  .pr__time { font-size: 1.35rem; font-weight: 600; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
-  .pr__pace { font-size: .8rem; font-variant-numeric: tabular-nums; }
-  .pr__bar {
-    position: relative; height: 4px; margin-top: .55rem; border-radius: 4px;
-    background: var(--border);
-  }
-  .pr__bar::before {
-    content: ''; position: absolute; inset: 0 auto 0 0; width: var(--x);
-    border-radius: 0 4px 4px 0; background: var(--accent);
-    transform-origin: left; scale: 0 1; transition: scale 1s var(--ease-out);
-  }
-  /* Doeltempo 4:15,9/km op schaal 7:00 = 60,9% */
-  .pr__bar::after { content: ''; position: absolute; left: 60.9%; top: -4px; bottom: -4px; width: 1.5px; background: var(--fg-muted); }
-  .prs[data-visible] .pr__bar::before { scale: 1 1; }
-  .pr--slower .pr__pace { color: var(--fg); }
-
   /* ================= NU ================= */
   .now {
     display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(1.5rem, 4vw, 3rem);
@@ -1008,6 +844,25 @@
     transition: border-color .3s;
   }
   .project:hover { border-color: var(--border-strong); }
+  .project + .project { margin-top: 1rem; }
+  /* Tweede project: beeld rechts, zodat de twee kaarten niet identiek ogen */
+  @media (min-width: 961px) {
+    .project + .project { grid-template-columns: 1fr 1.15fr; }
+    .project + .project .project__visual { order: 2; }
+    .project + .project .project__body { padding: 0 0 0 clamp(0rem, 2vw, 1.5rem); }
+  }
+  .project__logo--run {
+    display: grid; place-items: center; padding: 0;
+    background: oklch(0.22 0.06 260); border-color: oklch(0.55 0.2 260 / .4);
+    color: oklch(0.78 0.12 215); font-size: .8rem; font-weight: 500;
+  }
+  /* Specifieker dan .project__brand h3 (Clueuntry-goud), ook in het lichte thema */
+  .project .project__brand h3.project__name--run {
+    font-family: var(--font-sans); font-weight: 600; font-size: 2rem; letter-spacing: -.04em; line-height: 1;
+    color: var(--fg);
+  }
+  .project .project__brand h3.project__name--run span { color: oklch(0.72 0.15 240); font-weight: 400; }
+  [data-theme='light'] .project .project__brand h3.project__name--run span { color: oklch(0.52 0.2 260); }
   .project__visual {
     display: block; overflow: hidden;
     border-radius: var(--radius); border: 1px solid var(--border);
