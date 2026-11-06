@@ -11,7 +11,7 @@ import { init_race_chart } from './races.js';
 const reduced_motion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fine_pointer = matchMedia('(pointer: fine)').matches;
 const geboortedatum = new Date(1998, 8, 3);
-const email = 'romarjamal@gmail.com';
+const email = 'contact@nathoe.nl';
 
 /**
  * Korte querySelectorAll die een array teruggeeft
